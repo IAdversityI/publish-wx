@@ -1,0 +1,137 @@
+<!--index.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class='title'>
+    <view style='overflow:hidden'>
+      <image class='titleImg' src="{{src}}"></image>
+      <view style='height:40rpx;padding-left:42%;line-height:40rpx'>
+        <text class='titleName' decode='true' class="color_font">&nbsp;{{sightingName}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='content'>
+      <image src='../../images/sighting.png' style='float:left;background-color:'></image>
+      <text decode='true' class="color_font">&nbsp;景区名称</text>
+    </view>
+    <view class='contentInput'>
+      <input type='text' placeholder='{{sightingName}}' value='{{sightingName}}' name="shopname"></input>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='content'>
+      <image src='../../images/area1.png' style='float:left'></image>
+      <text decode='true' class="color_font">&nbsp;所属地区</text>
+    </view>
+    <view class='contentInput'>
+      <view class="section">
+        <!-- <view class="section__title">省市区选择器</view> -->
+        <view style='overflow:hidden;font-size:32rpx;padding-left:28rpx;margin-top:30rpx'>
+          <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}" style="color:#999999">
+            <view class="picker" name="shopaddress" decode='true'>
+              {{region[0]}} {{region[1]}} {{region[2]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+
+   <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/area.png' style='float:left'></image>
+        <text decode='true' class="color_font">&nbsp;如何到达(最多可输入350字)</text>
+      </view>
+      <view class="section" style='overflow:hidden'>
+        <textarea  class='arriveTextArea' value='{{arriveAt}}' maxlength='350' name='arriveAt' />
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/type.png' style='float:left'></image>
+        <text decode='true' class="color_font">&nbsp;商家类型</text>
+      </view>
+      <view class='contentInput'>
+        <!-- <input type='text' value='{{shoptype}}' name='shoptype'></input> -->
+        <radio-group class="radio-group" name="shoptype" style="color:#999999">
+          <label class="radio" wx:for="{{items}}">
+            <radio value="{{item.name}}" checked="{{item.checked}}" bindchange="radioChange" color="#17b990" />{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+  </view>
+  <!-- <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <image src='../../images/type.png' style='float:left'></image>
+  <text decode='true'>&nbsp;目的地类型</text>
+  <input type='text'></input>
+</view> -->
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/max.png' style='float:left'></image>
+        <text decode='true' class="color_font">&nbsp;最大承载人数</text>
+      </view>
+      <view class='contentInput'>
+        <input type='number' placeholder='{{maxPeople}}' value='{{maxPeople}}' name='pjpersons'></input>
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/car.png' style='float:left'></image>
+        <text decode='true' class="color_font">&nbsp;最大车位数</text>
+      </view>
+      <view class='contentInput'>
+        <input type='text' placeholder='{{maxCars}}' value='{{maxCars}}' name="shopcrowd"></input>
+      </view>
+    </view>
+  </view>
+
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/type.png' style='float:left'></image>
+        <text decode='true' class="color_font">&nbsp;景区简介(最多可输入1000字)</text>
+      </view>
+      <view class="section">
+        <textarea value='{{sightDetail}}' maxlength='1000' name='shopintroduction' />
+      </view>
+    </view>
+  </view>
+
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/tel.png' style='float:left'></image>
+        <text decode='true' class="color_font">&nbsp;联系电话</text>
+      </view>
+      <view class='contentInput'>
+        <input type='text' placeholder='{{tel}}' value='{{tel}}' name="shopphone"></input>
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/picture.png' style='float:left'></image>
+        <text decode='true' class="color_font">&nbsp;图片</text>
+      </view>
+      <view class='pic'>
+        <view class='addPic' bindtap='chooseImage'>
+          <image src='../../images/add2.png'></image>
+        </view>
+        <view class="img-item" bindlongpress="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
+          <icon type="clear" size="20" color="gray" style="display:{{editable?'block':'none'}}" bindtap="deleteImg" data-index="{{index}}" />
+          <image src="{{item}}" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style='margin-top:40rpx'>
+    <button size="{{primarySize}}" bindtap="submit" formType="submit" type="primary"> 提交 </button>
+  </view>
+</form>

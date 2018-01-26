@@ -1,0 +1,152 @@
+<!--pages/publish/publish.wxml-->
+<!--index.wxml-->
+<view class='title'>
+  <image class='titleImg' src='../../images/titleImage.png'></image>
+  <view style='height:40rpx;padding-left:42%;line-height:40rpx'>
+    <text class='titleName' decode='true' class='color_font'>&nbsp;红果树</text>
+  </view>
+</view>
+<form bindsubmit="publish">
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/actType.png' style='float:left'></image>
+        <text decode='true' class='color_font'>&nbsp;活动类型</text>
+      </view>
+      <view class='contentInput'>
+        <view style='overflow:hidden;padding-left:180rpx;margin-top:20rpx;font-size:32rpx'>
+          <radio-group class="radio-group" bindchange="radioChange" name="activetypeid">
+            <radio value="1" checked="checked" color="#17b990" />发布票
+            <radio value="2" color="#17b990" />发布券
+          </radio-group>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/actName.png' style='float:left'></image>
+        <text decode='true' class='color_font'>&nbsp;活动名称</text>
+      </view>
+      <view class='contentInput'>
+        <input type='text' name="activename"></input>
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/people.png' style='float:left'></image>
+        <text decode='true' class='color_font'>&nbsp;活动人数</text>
+      </view>
+      <view class='contentInput'>
+        <input type='text' name="activeperson"></input>
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/actMoney.png' style='float:left'></image>
+        <text decode='true' class='color_font'>&nbsp;活动价格</text>
+      </view>
+      <view class='contentInput'>
+        <input type='text' name="activeprice"></input>
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/actPrice.png' style='float:left'></image>
+        <text decode='true' class='color_font'>&nbsp;活动价值</text>
+      </view>
+      <view class='contentInput'>
+        <input type='text' name="activecoin"></input>
+
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/actStart.png' style='float:left'></image>
+        <text decode='true' class='color_font'>&nbsp;活动开始时间</text>
+      </view>
+      <view class='contentInput'>
+        <picker type='text' name="activestime" mode="date" bindchange='setactivestime'>
+          <input type='text' disabled='true' placeholder='{{activestime}}'></input>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/actEnd.png' style='float:left'></image>
+        <text decode='true' class='color_font'>&nbsp;活动结束时间</text>
+      </view>
+      <view class='contentInput'>
+        <picker type='text' name="activeetime" mode="date" bindchange='setactiveetime'>
+          <input type='text' disabled='true' placeholder='{{activeetime}}'></input>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/remind.png' style='float:left'></image>
+        <text decode='true' class='color_font'>&nbsp;临期提醒时间</text>
+      </view>
+      <view class='contentInput'>
+        <input type='number' name="remaintime"></input>
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/activity.png' style='float:left'></image>
+        <text decode='true' class='color_font'>&nbsp;活动简介(最多可输入1000字)</text>
+      </view>
+      <view class="section">
+        <textarea placeholder="请输入活动简介......" maxlength='1000' name="activeinfo" />
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/notice.png' style='float:left'></image>
+        <text decode='true' class='color_font'>&nbsp;活动备注</text>
+      </view>
+      <view class="section">
+        <textarea placeholder="请输入活动备注" maxlength='200' name="activenotes" />
+      </view>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='areaBox'>
+      <view class='content'>
+        <image src='../../images/picture.png' style='float:left'></image>
+        <text decode='true' class="color_font">&nbsp;图片</text>
+      </view>
+      <view class='pic'>
+        <view class='addPic' bindtap='chooseImage'>
+          <image src='../../images/add2.png'></image>
+        </view>
+        <view class="img-item" bindlongpress="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
+          <icon type="clear" size="20" color="gray" style="display:{{editable?'block':'none'}}" bindtap="deleteImg" data-index="{{index}}" />
+          <image src="{{item}}" mode="aspectFill"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" formType="submit" style='margin-top:40rpx'> 提交 </button>
+  </view>
+</form>

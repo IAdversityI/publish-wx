@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/publishTickets/publishTickets",
+    "pages/publishArch/publishArch",
+    "pages/publish/publish",
+    "pages/login/login",
+    "pages/select/select"
+  ],
+  "tabBar": {
+    "selectedColor": "#17b990",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "编辑基本信息",
+        "iconPath": "images/editIcon.png",
+        "selectedIconPath": "images/pressedEditIcon.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "发布实时信息",
+        "iconPath": "images/time_normal.png",
+        "selectedIconPath": "images/time_pressed.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "便利票券发布",
+        "iconPath": "images/ticket_normal.png",
+        "selectedIconPath": "images/ticket_pressed.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#17b990",
+    "navigationBarTextStyle": "#FFFFFF",
+    "navigationBarTitleText": "便利扣发布端",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  }
+}

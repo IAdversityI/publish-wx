@@ -1,0 +1,76 @@
+<!--index.wxml-->
+<view class='title'>
+  <image class='titleImg' src="{{src}}"></image>
+  <view style='height:40rpx;padding-left:40%;'>
+    <text class='titleName' decode='true'>&nbsp;黄果树景区</text>
+  </view>
+</view>
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <image src='../../images/sighting.png' style='float:left'></image>
+  <text decode='true'>&nbsp;景区名称</text>
+  <input type='text'></input>
+</view>
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <image src='../../images/area.png' style='float:left'></image>
+  <text decode='true'>&nbsp;所属地区</text>
+  <view class="section" style=''>
+    <!-- <view class="section__title">省市区选择器</view> -->
+    <view style='overflow:hidden;font-size:32rpx;border-bottom:1px solid #e6e6e6;padding-left:30rpx;margin-top:30rpx'>
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}" >
+      <view class="picker" >
+        {{region[0]}}，{{region[1]}}，{{region[2]}}
+      </view>
+    </picker>
+    </view>
+  </view>
+
+</view>
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <image src='../../images/route.png' style='float:left'></image>
+  <text decode='true'>&nbsp;如何到达</text>
+  <input type='text'></input>
+</view>
+<!-- <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <image src='../../images/type.png' style='float:left'></image>
+  <text decode='true'>&nbsp;目的地类型</text>
+  <input type='text'></input>
+</view> -->
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <image src='../../images/people.png' style='float:left'></image>
+  <text decode='true'>&nbsp;最大承载人数</text>
+  <input type='text'></input>
+</view>
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <image src='../../images/carport.png' style='float:left'></image>
+  <text decode='true'>&nbsp;最大车位数</text>
+  <input type='text'></input>
+</view>
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <image src='../../images/abstract.png' style='float:left'></image>
+  <text decode='true'>&nbsp;景区简介(最多可输入1000字)</text>
+  <view class="section">
+    <textarea placeholder="请输入景区简介......" auto-focus maxlength='1000' />
+  </view>
+</view>
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <image src='../../images/phone.png' style='float:left'></image>
+  <text decode='true'>&nbsp;移动电话</text>
+  <input type='text'></input>
+</view>
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <image src='../../images/picture.png' style='float:left'></image>
+  <text decode='true'>&nbsp;图片</text>
+  <view class='pic'>
+    <view class='addPic' bindtap='chooseImage'>
+      <image src='../../images/add2.png'></image>
+    </view>
+    <view class="img-item" bindlongpress="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
+      <icon type="clear" size="20" color="red" style="display:{{editable?'block':'none'}}" bindtap="deleteImg" data-index="{{index}}" />
+      <image src="{{item}}" mode="aspectFill"></image>
+
+    </view>
+  </view>
+</view>
+<view>
+  <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="primary"> 提交 </button>
+</view>

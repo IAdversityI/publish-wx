@@ -1,0 +1,100 @@
+/* login.wxss */
+
+.board {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+  margin-top: 70rpx;
+}
+
+.board-item {
+  display: flex;
+  flex: 1;
+  padding: 20rpx;
+  cursor: pointer;
+}
+
+input {
+  /*font-size: 36rpx;*/
+  width: 86%;
+  float: right;
+}
+
+.login_btn {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.forgetPas {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  /*padding: 30rpx;*/
+}
+
+.item {
+  display: flex;
+  flex: 1;
+  /*border: 1rpx solid black;*//*background-color: pink;*/
+  cursor: pointer;
+  float: left;
+}
+
+.txt2 {
+  font-size: 26rpx;
+  line-height: 100%;
+  position: relative;
+  top: 0rpx;
+  left: 0rpx;
+}
+
+.txt1 {
+  font-size: 26rpx;
+  line-height: 100%;
+  position: relative;
+  top: 0rpx;
+  left: 0rpx;
+}
+
+.left1 {
+  position: relative;
+  top: 0;
+  left: -160rpx;
+}
+
+.left2 {
+  position: relative;
+  top: 0;
+  right: -180rpx;
+}
+
+.left03 {
+  float: left;
+  width: 25%;
+  font-weight: bold;
+}
+
+navigator.nav2 {
+  height: auto;
+  width: 150rpx;
+  display: block;
+}
+
+.suo {
+  width: 15%;
+  height: 58%;
+  padding: 10rpx;
+  position: relative;
+  top: 6rpx;
+  left: 0rpx;
+}
+
+.bgw {
+  background-color: white;
+  border-bottom: 1rpx solid #eee;
+}
+.board-item1 {
+padding:20rpx;
+cursor:pointer;
+}

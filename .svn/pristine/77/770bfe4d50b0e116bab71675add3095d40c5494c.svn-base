@@ -1,0 +1,58 @@
+<!--logs.wxml-->
+<!--index.wxml-->
+<view class='title'>
+  <image class='titleImg' src='../../images/titleImage.png'></image>
+  <view style='height:40rpx;padding-left:40%;'>
+    <text class='titleName' decode='true'>&nbsp;黄果树景区</text>
+  </view>
+</view>
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <!-- <image src='../../images/sighting.png' style='float:left'></image> -->
+  <text decode='true'>&nbsp;客流拥挤度预警</text>
+  <radio-group class="radio-group" >
+    <label class="radio" wx:for="{{items}}">
+      <radio value="{{item.name}}" checked="{{item.checked}}" bindchange="radioChange" color="#17b990" 
+/>{{item.value}}
+    </label>
+  </radio-group>
+</view>
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <text decode='true'>&nbsp;车位密度提示</text>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{chewei}}">
+      <radio value="{{chewei.name}}" checked="{{chewei.checked}}" color="#17b990" />{{item.value}}
+    </label>
+  </radio-group>
+</view>
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <text decode='true'>&nbsp;温度提示</text>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{wendu}}">
+      <radio value="{{wendu.name}}" checked="{{wendu.checked}}" color="#17b990"/>{{item.value}}
+    </label>
+  </radio-group>
+</view>
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <text decode='true'>&nbsp;实时文字(最多可输入500字)</text>
+  <view class="section">
+    <textarea placeholder="请输入实时信息......" auto-focus maxlength='500' />
+  </view>
+</view>
+
+<view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+  <image src='../../images/picture.png' style='float:left'></image>
+  <text decode='true'>&nbsp;实时图片</text>
+  <view class='pic'>
+    <view class='addPic' bindtap='chooseImage'>
+      <image src='../../images/add2.png'></image>
+    </view>
+    <view class="img-item" bindlongpress="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
+      <icon type="clear" size="20" color="red" style="display:{{editable?'block':'none'}}" bindtap="deleteImg" data-index="{{index}}" />
+      <image src="{{item}}" mode="aspectFill"></image>
+
+    </view>
+  </view>
+</view>
+<view>
+  <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="primary">发布信息</button>
+</view>

@@ -1,0 +1,139 @@
+//logs.js
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    items: [
+      { name: 'SS', value: '舒适' },
+      { name: 'JSS', value: '较舒适' },
+      { name: 'YB', value: '一般' },
+      { name: 'JYJ', value: '较拥挤' },
+      { name: 'YJ', value: '拥挤' },
+      // { name: 'TUR', value: '法国', checked: 'true'},
+    ],
+    chewei: [
+      { name: 'SS', value: '空闲' },
+      { name: 'JSS', value: '较空闲' },
+      { name: 'YB', value: '一般' },
+      { name: 'JYJ', value: '较满' },
+      { name: 'YJ', value: '已满' },
+      // { name: 'TUR', value: '法国', checked: 'true'},
+    ],
+   wendu: [
+      { name: 'SS', value: '短袖' },
+      { name: 'JSS', value: '长袖' },
+      { name: 'YB', value: '外套' },
+      { name: 'JYJ', value: '毛衣' },
+      { name: 'YJ', value: '棉衣' },
+      // { name: 'TUR', value: '法国', checked: 'true'},
+    ]
+  },
+  radioChange: function (e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+  },
+  chooseImage: function () {
+    let _this = this;
+    wx.showActionSheet({
+      itemList: ['从相册中选择', '拍照'],
+      itemColor: "#17b990",
+      success: function (res) {
+        if (!res.cancel) {
+          if (res.tapIndex == 0) {
+            _this.chooseWxImage('album')
+          } else if (res.tapIndex == 1) {
+            _this.chooseWxImage('camera')
+          }
+        }
+      }
+    })
+  },
+  chooseWxImage: function (type) {
+    let _this = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'],
+      sourceType: [type],
+      success: function (res) {
+        _this.setData({
+          uploadimgs: _this.data.uploadimgs.concat(res.tempFilePaths)
+        })
+      }
+    })
+  },
+  editImage: function () {
+    this.setData({
+      editable: !this.data.editable
+    })
+  },
+  deleteImg: function (e) {
+    console.log(e.currentTarget.dataset.index);
+    const imgs = this.data.uploadimgs
+    // Array.prototype.remove = function(i){
+    //   const l = this.length;
+    //   if(l==1){
+    //     return []
+    //   }else if(i>1){
+    //     return [].concat(this.splice(0,i),this.splice(i+1,l-1))
+    //   }
+    // }
+    this.setData({
+      uploadimgs: imgs.remove(e.currentTarget.dataset.index)
+    })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    
+  }
+})

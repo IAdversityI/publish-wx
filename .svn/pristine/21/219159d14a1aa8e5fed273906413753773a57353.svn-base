@@ -1,0 +1,98 @@
+<!--pages/publish/publish.wxml-->
+<!-- <view>活动名称</view>
+<view>发布商家</view>
+<view>活动人数</view>
+<view>活动价值</view>
+<view>活动价格</view>
+<view>活动开始时间</view>
+<view>活动结束时间</view>
+<view>活动详情</view>
+<view>票券颜色</view>
+<view></view> -->
+<!--index.wxml-->
+<view class='title'>
+  <image class='titleImg' src='../../images/titleImage.png'></image>
+  <view style='height:40rpx;padding-left:40%;'>
+    <text class='titleName' decode='true'>&nbsp;商家头像</text>
+  </view>
+</view>
+<form bindsubmit="publish">
+<text decode='true'>&nbsp;活动类型</text>
+  <view style='overflow:hidden;padding-left:180rpx;margin-top:20rpx;font-size:32rpx'>
+    <radio-group class="radio-group" bindchange="radioChange" name="activetypeid">
+        <radio value="1" checked="checked" color="#17b990" />发布票
+        <radio value="2"  color="#17b990" />发布券
+    </radio-group>
+  </view>
+  <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+    <image src='../../images/sighting.png' style='float:left'></image>
+    <text decode='true'>&nbsp;活动名称</text>
+    <input  type='text' name="activename" ></input>
+  </view>
+  <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+    <image src='../../images/people.png' style='float:left'></image>
+    <text decode='true'>&nbsp;活动人数</text>
+    <input type='text' name="activeperson"></input>
+  </view>
+  <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+    <image src='../../images/type.png' style='float:left'></image>
+    <text decode='true'>&nbsp;活动价格</text>
+    <input type='text' name="activeprice"></input>
+  </view>
+  <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+    <image src='../../images/type.png' style='float:left'></image>
+    <text decode='true'>&nbsp;活动价值</text>
+    <input type='text' name="activecoin"></input>
+  </view>
+  <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+    <image src='../../images/people.png' style='float:left'></image>
+    <text decode='true'>&nbsp;活动开始时间</text>
+    <picker type='text' name="activestime" mode="date" bindchange='setactivestime'>
+      <input type='text' disabled='true' placeholder='{{activestime}}'></input>
+    </picker>
+  </view>
+  <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+    <image src='../../images/people.png' style='float:left'></image>
+    <text decode='true'>&nbsp;活动结束时间</text>
+    <picker type='text' name="activeetime" mode="date" bindchange='setactiveetime'>
+      <input type='text' disabled='true'placeholder='{{activeetime}}'></input>
+    </picker>
+  </view>
+  <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+    <image src='../../images/type.png' style='float:left'></image>
+    <text decode='true'>&nbsp;临期提醒时间</text>
+    <input type='number' name="remaintime"></input>
+  </view>
+  <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+    <image src='../../images/abstract.png' style='float:left'></image>
+    <text decode='true'>&nbsp;活动简介(最多可输入1000字)</text>
+    <view class="section">
+      <textarea placeholder="请输入活动简介......" auto-focus maxlength='1000' name="activeinfo" />
+    </view>
+  </view>
+  <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+    <image src='../../images/abstract.png' style='float:left'></image>
+    <text decode='true'>&nbsp;活动备注</text>
+    <view class="section">
+      <textarea placeholder="请输入活动备注" auto-focus maxlength='200' name="activenotes" />
+    </view>
+  </view>
+  <view style='overflow:hidden;padding-left:20rpx;margin-top:20rpx'>
+    <image src='../../images/picture.png' style='float:left'></image>
+    <text decode='true'>&nbsp;图片</text>
+    <view class='pic'>
+      <view class='addPic' bindtap='chooseImage'>
+        <image src='../../images/add2.png'></image>
+      </view>
+      <view class="img-item" bindlongpress="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
+        <icon type="clear" size="20" color="red" style="display:{{editable?'block':'none'}}" bindtap="deleteImg" data-index="{{index}}" />
+        <image src="{{item}}" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+
+
+  <view>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" formType="submit"> 提交 </button>
+  </view>
+</form>

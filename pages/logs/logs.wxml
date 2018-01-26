@@ -1,0 +1,41 @@
+<!--logs.wxml-->
+<!--index.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+<view class='title'>
+  <image class='titleImg' src='../../images/titleImage.png'></image>
+    <view style='height:40rpx;padding-left:42%;line-height:40rpx'>
+    <text class='titleName color_font' decode='true'>&nbsp;红果树</text>
+  </view>
+</view>
+<view class='box'>
+  <view class='areaBox'>
+    <view class='content'>
+      <image src='../../images/currentText.png' style='float:left'></image>
+      <text decode='true' class='color_font'>&nbsp;实时文字(最多可输入500字)</text>
+    </view>
+    <view class="section">
+      <textarea placeholder="请输入实时信息......" auto-focus maxlength='500' name='currentMes' value='{{currentMes}}' />
+    </view>
+  </view>
+</view>
+<view class='box'>
+  <view class='areaBox'>
+    <view class='content'>
+      <image src='../../images/picture.png' style='float:left'></image>
+      <text decode='true' class="color_font">&nbsp;图片</text>
+    </view>
+    <view class='pic'>
+      <view class='addPic' bindtap='chooseImage'>
+        <image src='../../images/add2.png'></image>
+      </view>
+      <view class="img-item" bindlongpress="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
+        <icon type="clear" size="20" color="gray" style="display:{{editable?'block':'none'}}" bindtap="deleteImg" data-index="{{index}}" />
+        <image src="{{item}}" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view style='margin-top:40rpx'>
+    <button size="{{primarySize}}" bindtap="submit" formType="submit" type="primary"> 提交 </button>
+  </view>
+</form>

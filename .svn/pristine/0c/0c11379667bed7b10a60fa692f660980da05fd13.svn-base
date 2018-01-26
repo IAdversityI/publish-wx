@@ -1,0 +1,66 @@
+var app = getApp()
+Page({
+  data: {
+    userName: '',
+    userPassword: '',
+    id_token: '',//方便存在本地的locakStorage  
+    response: '', //存取返回数据  
+    shop_id:''
+  },
+  userNameInput: function (e) {
+    this.setData({
+      userName: e.detail.value
+    })
+  },
+  userPasswordInput: function (e) {
+    this.setData({
+      userPassword: e.detail.value
+    })
+    console.log(e.detail.value)
+  },
+  logIn: function () {
+    var that = this
+    wx.request({
+      url: 'http://114.115.149.80:8085/tmc/v1/login',
+      data: {
+        username: this.data.userName,
+        password: this.data.userPassword,
+      },
+      method: 'POST',
+      success: function (res) {
+        that.setData({
+          shop_id: res.data.data.user.shopid,
+          response: res 
+        })
+        console.log(res)  
+        wx.setStorage({
+          key: "id_token",
+      
+          // data: "value",
+          data: res.data.data.jwtToken
+        })
+        try {
+          wx.setStorageSync('key', 'value')
+        } catch (e) {
+        }
+        wx.setStorage({
+          key: "shop_id",
+
+          // data: "value",
+          data: res.data.data.user.shopid
+        })
+        try {
+          wx.setStorageSync('key', 'value')
+        } catch (e) {
+        }
+        wx.reLaunch({
+          url: '/pages/index/index'
+        })
+      },
+      fail: function (res) {
+        console.log(res.data);
+        console.log('is failed')
+      }
+    })
+  }
+})  

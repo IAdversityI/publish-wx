@@ -1,0 +1,16 @@
+<!--login.wxml-->
+<view class="board">
+  <view style='margin:20px 30px'>
+    <view class="board-item bgw">
+      <view class="left03"> 账号</view>
+      <input bindinput="userNameInput" placeholder="请输入账号" />
+    </view>
+    <view class="board-item bgw">
+      <view class="left03">密码</view>
+      <input bindinput="userPasswordInput" password="true" placeholder="请输入密码" />
+    </view>
+  </view>
+  <view class="board-item">
+      <button type="primary" bindtap="logIn" style="background-color:#17b990">登录</button>
+  </view>
+</view>

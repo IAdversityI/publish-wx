@@ -1,0 +1,6 @@
+/**app.wxss**/
+ button[type="primary"] {
+color:#FFFFFF;
+background-color:#17b990;
+width: 80%;
+} 
